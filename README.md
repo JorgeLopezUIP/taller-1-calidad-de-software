@@ -1,13 +1,15 @@
 Instrucciones 
 
-1. Inicializar docker
+1. Crear un archivo .env y pegar los datos de env.example en el 
+
+2. Inicializar docker
    cd "direccion del proyecto"
    ejecutar docker compose up -d en la terminal
 
-2. Ejecutar database.py
+3. Ejecutar database.py
 
-3. Ejecutar app.py
+4. Ejecutar app.py
 
-4. Hacer cliq en registrarte y introducir datos
+5. Hacer cliq en registrarte y introducir datos
 
-5. Volver a la pagina principal y logearse con los datos introducidos
+6. Volver a la pagina principal y logearse con los datos introducidos
