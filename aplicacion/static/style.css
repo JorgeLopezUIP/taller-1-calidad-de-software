@@ -1,0 +1,223 @@
+:root {
+    --bg-1: #0f172a;
+    --bg-2: #111827;
+    --card: rgba(15, 23, 42, 0.72);
+    --card-strong: rgba(17, 24, 39, 0.9);
+    --primary: #7c3aed;
+    --primary-2: #a78bfa;
+    --accent: #34d399;
+    --text: #e5e7eb;
+    --muted: #cbd5e1;
+    --danger: #f87171;
+    --shadow: rgba(15, 23, 42, 0.35);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+}
+
+.page-shell {
+    width: min(100%, 1100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-card,
+.welcome-card {
+    width: min(100%, 440px);
+    background: var(--card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    box-shadow: 0 24px 70px var(--shadow);
+    overflow: hidden;
+}
+
+.auth-card {
+    padding: 30px 26px 24px;
+}
+
+.welcome-card {
+    padding: 34px 28px;
+    width: min(100%, 560px);
+    text-align: center;
+}
+
+.brand {
+    font-size: 1.1rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--primary-2);
+    text-align: center;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+h1 {
+    margin: 0 0 20px;
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    text-align: center;
+}
+
+.flash-messages {
+    margin: 0 0 18px;
+    display: grid;
+    gap: 10px;
+}
+
+.flash {
+    background: rgba(248, 113, 113, 0.12);
+    border: 1px solid rgba(248, 113, 113, 0.4);
+    color: #fecaca;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+form {
+    display: grid;
+    gap: 16px;
+}
+
+.field-group {
+    display: grid;
+    gap: 8px;
+}
+
+label {
+    font-size: 0.92rem;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(15, 23, 42, 0.7);
+    color: var(--text);
+    padding: 13px 14px;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-2);
+    box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.18);
+}
+
+button, .btn-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+button {
+    background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    color: white;
+    box-shadow: 0 12px 26px rgba(124, 58, 237, 0.35);
+}
+
+button:hover, .btn-link:hover {
+    transform: translateY(-1px);
+}
+
+.form-footer {
+    margin-top: 10px;
+    color: var(--muted);
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.form-footer a {
+    color: var(--primary-2);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.welcome-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(52, 211, 153, 0.18);
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #bbf7d0;
+    margin-bottom: 16px;
+}
+
+.welcome-card p {
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 14px 0 26px;
+    font-size: 1.05rem;
+}
+
+.welcome-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-link {
+    width: auto;
+    min-width: 180px;
+    background: rgba(124, 58, 237, 0.18);
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    color: var(--text);
+}
+
+.btn-link.logout {
+    background: rgba(248, 113, 113, 0.12);
+    border-color: rgba(248, 113, 113, 0.3);
+    color: #fecaca;
+}
+
+@media (max-width: 520px) {
+    .auth-card,
+    .welcome-card {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .welcome-actions {
+        flex-direction: column;
+    }
+
+    .btn-link {
+        width: 100%;
+    }
+}

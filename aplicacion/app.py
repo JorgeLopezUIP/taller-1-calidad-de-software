@@ -1,11 +1,13 @@
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from conexion import obtener_conexion
+from database import crear_tabla_estudiantes
 from werkzeug.security import generate_password_hash, check_password_hash
 import os, secrets
 
 app = Flask(__name__)
-app.secret_key = secrets.token_hex(31)  
+app.secret_key = secrets.token_hex(31)
+crear_tabla_estudiantes()
 
 
 @app.route("/")

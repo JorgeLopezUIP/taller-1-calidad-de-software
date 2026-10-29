@@ -1,17 +1,44 @@
-services: 
-  mariadb: 
-    image: mariadb
-    container_name: taller1
+services:
+  app:
+    build: .
+    container_name: taller1-app
     restart: unless-stopped
-    environment: 
+    ports:
+      - "5000:5000"
+    environment:
+      DB_HOST: mariadb
+      DB_ROOT_PASS: "${DB_ROOT_PASS}"
+      DB_USER: "${DB_USER}"
+      DB_PASSWORD: "${DB_PASSWORD}"
+      DB_NAME: "${DB_NAME}"
+      DB_PORT: "3306"
+    depends_on:
+      - mariadb
+    volumes:
+      - ./aplicacion:/app
+    networks:
+      - taller-network
+
+  mariadb:
+    image: mariadb
+    container_name: taller1-db
+    restart: unless-stopped
+    environment:
       MARIADB_ROOT_PASSWORD: "${DB_ROOT_PASS}"
-      MARIADB_DATABASE: "${DB_NAME}" 
-      MARIADB_USER: "${DB_USER}" 
+      MARIADB_DATABASE: "${DB_NAME}"
+      MARIADB_USER: "${DB_USER}"
       MARIADB_PASSWORD: "${DB_PASSWORD}"
-    ports: 
+    ports:
       - "${DB_PORT}:3306"
-    volumes: 
+    volumes:
       - mariadb_data:/var/lib/mysql
       - ./initdb:/docker-entrypoint-initdb.d
-volumes: 
-    mariadb_data:
+    networks:
+      - taller-network
+
+volumes:
+  mariadb_data:
+
+networks:
+  taller-network:
+    driver: bridge

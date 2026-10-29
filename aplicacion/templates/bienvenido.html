@@ -3,15 +3,22 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>¡Bienvenido, {{ nombre }}!</h1>
+    <div class="page-shell">
+        <div class="welcome-card">
+            <div class="welcome-badge">Sesión activa</div>
+            <h1>¡Bienvenido, {{ nombre }}!</h1>
+            <p>Has iniciado sesión correctamente y ya puedes continuar con tu experiencia en la aplicación.</p>
 
-    <p>Has iniciado sesión correctamente.</p>
-
-    <a href="{{ url_for('logout') }}">
-        Cerrar sesión
-    </a>
+            <div class="welcome-actions">
+                <a class="btn-link" href="{{ url_for('login') }}">Volver al inicio</a>
+                <a class="btn-link logout" href="{{ url_for('logout') }}">Cerrar sesión</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

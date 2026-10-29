@@ -3,32 +3,45 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de sesión</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Iniciar sesión</h1>
+    <div class="page-shell">
+        <div class="auth-card">
+            <div class="brand">Taller 1</div>
+            <h1>Iniciar sesión</h1>
 
-    {% with mensajes = get_flashed_messages() %}
-        {% for mensaje in mensajes %}
-            <p>{{ mensaje }}</p>
-        {% endfor %}
-    {% endwith %}
+            {% with mensajes = get_flashed_messages() %}
+                {% if mensajes %}
+                    <div class="flash-messages">
+                        {% for mensaje in mensajes %}
+                            <div class="flash">{{ mensaje }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
 
-    <form method="POST">
-        <label>Correo:</label>
-        <input type="email" name="email" required>
-        <br><br>
+            <form method="POST">
+                <div class="field-group">
+                    <label for="email">Correo</label>
+                    <input id="email" type="email" name="email" required>
+                </div>
 
-        <label>Contraseña:</label>
-        <input type="password" name="contrasena" required>
-        <br><br>
+                <div class="field-group">
+                    <label for="contrasena">Contraseña</label>
+                    <input id="contrasena" type="password" name="contrasena" required>
+                </div>
 
-        <button type="submit">Ingresar</button>
-    </form>
+                <button type="submit">Ingresar</button>
+            </form>
 
-    <p>
-        ¿No tienes cuenta?
-        <a href="{{ url_for('registro') }}">Registrarse</a>
-    </p>
+            <p class="form-footer">
+                ¿No tienes cuenta?
+                <a href="{{ url_for('registro') }}">Registrarse</a>
+            </p>
+        </div>
+    </div>
 </body>
 </html>
